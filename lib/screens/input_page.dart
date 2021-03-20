@@ -136,7 +136,7 @@ class _InputPageState extends State<InputPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'WEIGHT',
+                            'WEIGHT (lbs)',
                             style: kLabelTextStyle,
                           ),
                           Text(
@@ -150,7 +150,7 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPressed: () {
                                   setState(() {
-                                    --weight;
+                                    weight--;
                                   });
                                 },
                               ),
@@ -161,7 +161,7 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
                                   setState(() {
-                                    ++weight;
+                                    weight++;
                                   });
                                 },
                               ),
@@ -192,7 +192,7 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPressed: () {
                                   setState(() {
-                                    --age;
+                                    age--;
                                   });
                                 },
                               ),
@@ -203,7 +203,7 @@ class _InputPageState extends State<InputPage> {
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
                                   setState(() {
-                                    ++age;
+                                    age++;
                                   });
                                 },
                               ),

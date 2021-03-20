@@ -1,5 +1,3 @@
-import 'dart:math';
-
 class CalculatorBrain {
   CalculatorBrain({this.height, this.weight});
 
@@ -7,7 +5,7 @@ class CalculatorBrain {
   final int weight;
 
   double _bmi;
-
+//lbs calculation
   String calculateBMI() {
     _bmi = (weight / (height * height)) * 703;
     return _bmi.toStringAsFixed(1);
