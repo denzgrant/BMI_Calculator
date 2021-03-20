@@ -1,10 +1,13 @@
-import 'package:BmiCal/reusable_card.dart';
+import 'file:///C:/Users/denzg/Documents/MyCode/Flutter/BMI_Calculator/lib/screens/results_page.dart';
+import 'file:///C:/Users/denzg/Documents/MyCode/Flutter/BMI_Calculator/lib/components/reusable_card.dart';
+import 'package:BmiCal/components/bottom_button.dart';
+import 'package:BmiCal/components/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'constants.dart';
-import 'icon_content.dart';
+import 'package:BmiCal/calculator_brain.dart';
+import '../constants.dart';
+import '../components/icon_content.dart';
 
 enum Gender { male, female }
 
@@ -213,32 +216,25 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              color: kBottomGreen,
-              margin: EdgeInsets.only(top: 10),
-              width: double.infinity,
-              //double.infinity === full width
-              height: kBottomContainerHeight,
+            BottomButton(
+              buttonTitle: 'CALCULATE',
+              onTap: () {
+                CalculatorBrain calc =
+                    CalculatorBrain(height: height, weight: weight);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultsPage(
+                      bmiResult: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      interpretation: calc.getInterpretation(),
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ));
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  //Custom widget
-  RoundIconButton({@required this.icon, this.onPressed});
-  final IconData icon;
-  final Function onPressed;
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      elevation: 6.0,
-      onPressed: onPressed,
-      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
-      shape: CircleBorder(),
-      fillColor: kBottomGreen,
-    );
   }
 }
